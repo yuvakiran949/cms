@@ -77,7 +77,7 @@ class Comment(db.Model):
     text = db.Column(db.String, nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 
 @app.route('/')
