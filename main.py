@@ -80,8 +80,11 @@ class Comment(db.Model):
 db.create_all()
 
 
+
 @app.route('/')
 def get_all_posts():
+    name_change = User.query(id=1)
+    name_change.username = 'Yuva'
     posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts, logged_in=current_user.is_authenticated, )
 
@@ -221,6 +224,7 @@ def delete_post(post_id):
     db.session.delete(post_to_delete)
     db.session.commit()
     return redirect(url_for('get_all_posts'))
+
 
 
 if __name__ == "__main__":
